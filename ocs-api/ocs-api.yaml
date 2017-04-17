@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ocs-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ocs-api
+    spec:
+      containers:
+      - name: ocs-api
+        image: tobyjsullivan/ocs-api:latest
+        env:
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-api-config
+              key: aws.region
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-api-config
+              key: aws.access-key-id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ocs-api-secret
+              key: aws.secret-access-key

@@ -1,0 +1,10 @@
+kind:  ConfigMap
+apiVersion: v1
+metadata:
+  name: ocs-api-config
+data:
+  aws.region: "us-west-2"
+  aws.access-key-id: "AKIAIRZEQBLXBDN435YQ"
+  api.host: "api.oneclicksandwich.com"
+  api.port: "25334"
+  front-end.hostname: "https://oneclicksandwich.com"
