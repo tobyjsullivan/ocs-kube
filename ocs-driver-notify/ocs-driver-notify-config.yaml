@@ -1,0 +1,10 @@
+kind:  ConfigMap
+apiVersion: v1
+metadata:
+  name: ocs-driver-notify-config
+data:
+  aws.region: us-west-2
+  aws.access-key-id: AKIAJFJCFWNMANSML22Q
+  twilio.account-sid: AC836e017add54a9ad692103cb04022af0
+  service.source-phone-number: "+16042657199"
+  service.driver-phone-number: "+17786881639"

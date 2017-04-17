@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ocs-driver-notify-v1
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ocs-driver-notify
+    spec:
+      containers:
+      - name: ocs-driver-notify
+        image: tobyjsullivan/ocs-driver-notify:latest
+        env:
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-driver-notify-config
+              key: aws.region
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-driver-notify-config
+              key: aws.access-key-id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ocs-driver-notify-secret
+              key: aws.secret-access-key
+        - name: TWILIO_ACCOUNT_SID
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-driver-notify-config
+              key: twilio.account-sid
+        - name: TWILIO_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: ocs-driver-notify-secret
+              key: twilio.auth-toke
+        - name: SERVICE_PHONE
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-driver-notify-config
+              key: service.source-phone-number
+        - name: DRIVER_PHONE_NUMBER
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-driver-notify-config
+              key: service.driver-phone-number
