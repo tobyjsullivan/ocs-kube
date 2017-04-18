@@ -13,6 +13,21 @@ spec:
       - name: ocs-api
         image: tobyjsullivan/ocs-api:latest
         env:
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-api-config
+              key: api.host
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-api-config
+              key: api.port
+        - name: FRONT_END_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-api-config
+              key: front-end.hostname
         - name: AWS_REGION
           valueFrom:
             configMapKeyRef:
