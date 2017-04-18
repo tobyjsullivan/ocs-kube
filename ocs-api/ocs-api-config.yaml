@@ -5,6 +5,6 @@ metadata:
 data:
   aws.region: "us-west-2"
   aws.access-key-id: "AKIAIRZEQBLXBDN435YQ"
-  api.host: "api.oneclicksandwich.com"
+  api.host: "0.0.0.0"
   api.port: "25334"
   front-end.hostname: "https://oneclicksandwich.com"
