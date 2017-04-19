@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocs-orders-service
+spec:
+  selector:
+    app: ocs-orders
+  ports:
+  - port: 15421
+    protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ocs-orders
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ocs-orders
+    spec:
+      containers:
+      - name: ocs-orders
+        image: tobyjsullivan/ocs-orders:latest
+        ports:
+        - containerPort: 15421
+        env:
+        - name: PORT
+          value: "15421"
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-orders-config
+              key: aws.region
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            configMapKeyRef:
+              name: ocs-orders-config
+              key: aws.access-key-id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ocs-orders-secret
+              key: aws.secret-access-key

@@ -1,0 +1,7 @@
+kind:  ConfigMap
+apiVersion: v1
+metadata:
+  name: ocs-orders-config
+data:
+  aws.region: "us-west-2"
+  aws.access-key-id: "AKIAJ3NBPL22CDCCVUYA"
