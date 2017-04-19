@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: ocs-orders
-        image: tobyjsullivan/ocs-orders:latest
+        image: tobyjsullivan/ocs-orders:v2
         ports:
         - containerPort: 15421
         env:
