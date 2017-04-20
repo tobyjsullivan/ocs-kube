@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: ocs-api
-        image: tobyjsullivan/ocs-api:latest
+        image: tobyjsullivan/ocs-api:v2
         ports:
         - containerPort: 9376
         env:
