@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ocs-driver-notify-v1
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
